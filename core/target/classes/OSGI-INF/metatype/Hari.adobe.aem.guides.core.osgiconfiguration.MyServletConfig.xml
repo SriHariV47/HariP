@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/Hari.adobe.aem.guides.core.osgiconfiguration.MyServletConfig">
+  <OCD id="Hari.adobe.aem.guides.core.osgiconfiguration.MyServletConfig" name="My Servlet Configuration" description="Configuration for My Servlet">
+    <AD id="getName" type="String" name="Name" description="The name to be printed on the server page" default="World"/>
+  </OCD>
+  <Designate pid="Hari.adobe.aem.guides.core.servlets.ServletOsgiC">
+    <Object ocdref="Hari.adobe.aem.guides.core.osgiconfiguration.MyServletConfig"/>
+  </Designate>
+</metatype:MetaData>

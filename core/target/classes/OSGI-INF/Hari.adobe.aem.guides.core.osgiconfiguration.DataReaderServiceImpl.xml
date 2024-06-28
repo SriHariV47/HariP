@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="Hari.adobe.aem.guides.core.osgiconfiguration.DataReaderServiceImpl" immediate="true">
+  <service>
+    <provide interface="Hari.adobe.aem.guides.core.osgiconfiguration.DataReaderService"/>
+  </service>
+  <implementation class="Hari.adobe.aem.guides.core.osgiconfiguration.DataReaderServiceImpl"/>
+</scr:component>

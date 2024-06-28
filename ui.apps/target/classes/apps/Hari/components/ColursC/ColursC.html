@@ -1,0 +1,41 @@
+Colourcompo
+
+<div class="your-component">
+
+    <h2>${properties.title}</h2>
+
+    <p>${properties.pathfield}</p>
+
+    <p>${properties.text1}</p>
+    <p>${properties.text2}</p>
+    <p>${properties.text3}</p>
+    <p>${properties.text4}</p>
+    <p>${properties.text5}</p>
+
+    <div class="dropdown-color" data-color="${properties.dropdown}">
+        <p>Selected Color: ${properties.dropdown}</p>
+    </div>
+</div>
+
+<script>
+    (function(document, $) {
+        "use strict";
+        $(document).ready(function() {
+            var $dropdown = $("[name='./dropdown']");
+            var $checkbox = $("[name='./checkbox']");
+
+            function toggleCheckbox() {
+                if ($dropdown.val() === 'red') {
+                    $checkbox.prop('disabled', false);
+                } else {
+                    $checkbox.prop('disabled', true);
+                }
+            }
+
+            $dropdown.on('change', toggleCheckbox);
+
+            // Initial call to set the correct state
+            toggleCheckbox();
+        });
+    })(document, Granite.$);
+</script>

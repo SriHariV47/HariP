@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="Hari.adobe.aem.guides.core.servlets.Video">
+  <property name="sling.servlet.paths" type="String">/bin/apps/demoexorgnoeinbnb/fdcgvbnm</property>
+  <service>
+    <provide interface="javax.servlet.Servlet"/>
+  </service>
+  <implementation class="Hari.adobe.aem.guides.core.servlets.Video"/>
+</scr:component>

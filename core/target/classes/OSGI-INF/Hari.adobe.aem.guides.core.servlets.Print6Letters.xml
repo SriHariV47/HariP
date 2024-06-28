@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="Hari.adobe.aem.guides.core.servlets.Print6Letters">
+  <property name="sling.servlet.paths" type="String" value="/bin/example/dernjrjkjhvhmo"/>
+  <property name="sling.servlet.resourceTypes" type="String" value="cq/gui/components/authoring/dialog"/>
+  <property name="sling.servlet.selectors" type="String">sample1</property>
+  <property name="sling.servlet.resourceSuperType" type="String" value="sling/bundle/resource"/>
+  <service>
+    <provide interface="javax.servlet.Servlet"/>
+  </service>
+  <implementation class="Hari.adobe.aem.guides.core.servlets.Print6Letters"/>
+</scr:component>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="Hari.adobe.aem.core.services.impl.DataUtilServicesImpl">
+  <service>
+    <provide interface="Hari.adobe.aem.core.services.DataUtilService"/>
+  </service>
+  <reference name="factory" interface="org.apache.sling.api.resource.ResourceResolverFactory" field="factory"/>
+  <implementation class="Hari.adobe.aem.core.services.impl.DataUtilServicesImpl"/>
+</scr:component>

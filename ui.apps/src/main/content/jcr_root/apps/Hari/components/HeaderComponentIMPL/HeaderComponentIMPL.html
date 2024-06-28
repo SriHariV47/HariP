@@ -1,0 +1,24 @@
+<div class="header-component">
+    <h1>Author Bio</h1>
+    
+    <!-- Inject the HeaderSlingmodelEx model -->
+    <sly data-sly-use.headerModel="${'Hari.adobe.aem.guides.core.models.HeaderSlingmodelExIn'}"></sly>
+    
+    <!-- Display the properties -->
+    <h2>${headerModel.text}</h2>
+    <p>Checkbox: ${headerModel.checkbox}</p>
+    <p>Pathfield: ${headerModel.pathfield}</p>
+    
+    <!-- Display the details multifield -->
+    <div class="multifield-items">
+        <h3>Details:</h3>
+        <ul>
+            <sly data-sly-list.item="${headerModel.details}">
+                <li>
+                    <p>First Name: ${item.firstname}</p>
+                    <p>DOB: ${item.dob}</p>
+                </li>
+            </sly>
+        </ul>
+    </div>
+</div>

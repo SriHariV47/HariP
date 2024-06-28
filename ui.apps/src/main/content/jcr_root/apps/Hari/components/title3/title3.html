@@ -1,0 +1,65 @@
+
+
+Title3
+<form action="/bin/generatepdf" method="get">
+
+    <button type="submit">Submit</button>
+</form>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate PDF</title>
+</head>
+<body>
+    <div>
+        <label for="component1">Component 1:</label>
+        <input type="text" id="component1">
+    </div>
+    <div>
+        <label for="component2">Component 2:</label>
+        <input type="text" id="component2">
+    </div>
+    <div>
+        <label for="component3">Component 3:</label>
+        <input type="text" id="component3">
+    </div>
+    <button onclick="generatePDF()">Generate PDF</button>
+
+    <script>
+        function generatePDF() {
+            const component1 = document.getElementById('component1').value;
+            const component2 = document.getElementById('component2').value;
+            const component3 = document.getElementById('component3').value;
+
+            fetch('/generate-pdf', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ component1, component2, component3 })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to generate PDF');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'generated.pdf';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => {
+                console.error('Error generating PDF:', error);
+            });
+        }
+    </script>
+</body>
+</html>

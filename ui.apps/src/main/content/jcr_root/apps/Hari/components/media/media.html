@@ -1,0 +1,21 @@
+<h2>Media</h2>
+
+
+<div class="media-component">
+    <h2>${properties.title}</h2>
+    <p>${properties.description}</p>
+    <div class="content">
+        <div class="text">
+            <p>${properties.paragraph}</p>
+            <cq:include path="${properties.image}" resourceType="foundation/components/image" />
+        </div>
+        <div class="button-cta">
+            <cq:if condition="${!properties.isCTA}">
+                <a href="${properties.buttonUrl}" class="button">${properties.buttonText}</a>
+            </cq:if>
+            <cq:if condition="${properties.isCTA}">
+                <a href="${properties.ctaUrl}" class="cta">${properties.ctaText}</a>
+            </cq:if>
+        </div>
+    </div>
+</div>

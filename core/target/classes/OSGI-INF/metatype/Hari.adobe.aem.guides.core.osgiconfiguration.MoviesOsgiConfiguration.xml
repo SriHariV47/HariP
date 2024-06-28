@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/Hari.adobe.aem.guides.core.osgiconfiguration.MoviesOsgiConfiguration">
+  <OCD id="Hari.adobe.aem.guides.core.osgiconfiguration.MoviesOsgiConfiguration" name="movies details" description="enter the movie details">
+    <AD id="getHeroName" type="String" name="hero name" description="enter hero name" default="balakrishna"/>
+    <AD id="getHeroAge" type="Integer" name="hero age" description="enter hero age" default="50"/>
+  </OCD>
+  <Designate pid="Hari.adobe.aem.guides.core.osgiconfiguration.OsgiConfigIMPL">
+    <Object ocdref="Hari.adobe.aem.guides.core.osgiconfiguration.MoviesOsgiConfiguration"/>
+  </Designate>
+</metatype:MetaData>

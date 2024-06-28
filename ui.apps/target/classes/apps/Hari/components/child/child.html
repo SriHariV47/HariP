@@ -1,0 +1,16 @@
+<h2>Child pages</h2>
+
+
+<div>Page Path: ${properties.parentPagePath}</div>
+
+<sly data-sly-use.model="Hari.adobe.aem.guides.core.models.ChildPagesModel">
+    <div>
+        <ul>
+            <sly data-sly-list.child="${model.childPages}">
+                <li>
+                    <a href="${child.path}">${child.title}</a>
+                </li>
+            </sly>
+        </ul>
+    </div>
+</sly>

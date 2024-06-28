@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/Hari/clientlibs"/>
+    <filter root="/apps/Hari/components"/>
+    <filter root="/apps/Hari/i18n"/>
+</workspaceFilter>

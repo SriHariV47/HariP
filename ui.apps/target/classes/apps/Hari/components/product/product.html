@@ -1,0 +1,22 @@
+<h2>Product details</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Card</title>
+</head>
+<body>
+    <div class="product-card">
+        <p><b>ID:</b> {{properties.id}}</p>
+        <p><b>Name:</b> {{properties.name}}</p>
+        <p><b>Description:</b> {{properties.description}}</p>
+        <p><b>Type:</b> {{properties.type}}</p>
+        <p><b>Price:</b> {{properties.price}}</p>
+        <form action="/path/to/cart/servlet" method="post">
+            <input type="hidden" name="productId" value="{{properties.id}}">
+            <button type="submit">{{#if osgiConfig.addButtonForType[properties.type]}}{{osgiConfig.addButtonForType[properties.type]}}{{#else}}Add to Cart{{/if}}</button>
+        </form>
+    </div>
+</body>
+</html>

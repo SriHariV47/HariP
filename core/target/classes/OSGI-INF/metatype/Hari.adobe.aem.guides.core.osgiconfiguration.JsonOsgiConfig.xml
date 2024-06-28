@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/Hari.adobe.aem.guides.core.osgiconfiguration.JsonOsgiConfig">
+  <OCD id="Hari.adobe.aem.guides.core.osgiconfiguration.JsonOsgiConfig" name="Servlet OSGIConfig" description="Configuration for My Servlet">
+    <AD id="getURL" type="String" name="URL" description="The URL to be printed on the server page" default="https://jsonplaceholder.typicode.com/users/1"/>
+  </OCD>
+  <Designate pid="Hari.adobe.aem.core.services.impl.JsonOsgiConfigurationIMP">
+    <Object ocdref="Hari.adobe.aem.guides.core.osgiconfiguration.JsonOsgiConfig"/>
+  </Designate>
+</metatype:MetaData>

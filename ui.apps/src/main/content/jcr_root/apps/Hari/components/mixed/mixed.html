@@ -1,0 +1,12 @@
+
+<sly data-sly-use.model="Hari.adobe.aem.guides.core.models.Mixed">
+    <!-- Display Experience Fragment -->
+    <sly data-sly-test="${model.experienceFragmentHtml}">
+        ${model.experienceFragmentHtml @ context='html'}
+    </sly>
+
+    <!-- Display Content Fragment -->
+    <sly data-sly-test="${model.contentFragmentContent}">
+        ${model.contentFragmentContent @ context='html'}
+    </sly>
+</sly>a

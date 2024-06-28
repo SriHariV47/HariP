@@ -1,0 +1,17 @@
+<h1>Day component component</h1>
+<div data-sly-use.obj="Hari.adobe.aem.guides.core.models.DaySlingModel"></div>
+ <div>Text:${obj.text}</div>
+<div>path=${obj.getPathField}</div>
+    <p>Check: ${obj.checkbox ? 'Yes' : 'No'}</p>
+ 
+    <div data-sly-list.multi="${obj.details}">
+      <div>firstName :${multi.firstname} </div>
+       <div>Date Of Birth: ${multi.getDOB}</div>
+   </div>
+
+
+
+
+
+
+

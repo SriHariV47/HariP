@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Test</title>
+    <style>
+        #video {
+            border: 1px solid black;
+        }
+        #canvas {
+            border: 1px solid black;
+            display: none;
+        }
+        #output-canvas {
+            border: 1px solid black;
+            display: none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>WebRTC Test</h1>
+    <button id="start-camera">Start Camera</button>
+    <video id="video" width="300" height="300" autoplay style="display:none;"></video>
+    <button id="snap" style="display: none;">Snap Photo</button>
+    <button id="recapture" style="display: none;">Recapture Photo</button>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <canvas id="output-canvas" width="300" height="300"></canvas>
+    <p id="location-info" style="display:none;">
+        Latitude: <span id="latitude"></span><br>
+        Longitude: <span id="longitude"></span>
+    </p>
+    <button id="download" style="display: none;">Download Image</button>
+    <script>
+        (function () {
+            const startCameraButton = document.getElementById('start-camera');
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            const outputCanvas = document.getElementById('output-canvas');
+            const snap = document.getElementById('snap');
+            const recapture = document.getElementById('recapture');
+            const locationInfo = document.getElementById('location-info');
+            const latitudeSpan = document.getElementById('latitude');
+            const longitudeSpan = document.getElementById('longitude');
+            const downloadButton = document.getElementById('download');
+            const context = canvas.getContext('2d');
+            const outputContext = outputCanvas.getContext('2d');
+
+            let stream;
+
+            function startCamera() {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function (mediaStream) {
+                        stream = mediaStream;
+                        video.srcObject = stream;
+                        video.style.display = 'block';
+                        snap.style.display = 'inline';
+                        startCameraButton.style.display = 'none';
+                        console.log('WebRTC is supported!');
+                    })
+                    .catch(function (err) {
+                        console.log('WebRTC is not supported: ' + err);
+                    });
+            }
+
+            snap.addEventListener('click', function () {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    latitudeSpan.textContent = latitude;
+                    longitudeSpan.textContent = longitude;
+                    locationInfo.style.display = 'block';
+                }, function(error) {
+                    console.error('Error getting location: ', error);
+                });
+
+                context.drawImage(video, 0, 0, 300, 300);
+                canvas.toBlob(function(blob) {
+                    createCircularImage(blob);
+                }, 'image/png');
+                canvas.style.display = 'block';
+                recapture.style.display = 'inline';
+                downloadButton.style.display = 'inline';
+                snap.style.display = 'none';
+
+                if (stream) {
+                    stream.getTracks().forEach(track => track.stop());
+                }
+            });
+
+            function createCircularImage(blob) {
+                const img = new Image();
+                img.onload = function () {
+                    outputContext.clearRect(0, 0, outputCanvas.width, outputCanvas.height);
+                    outputContext.save();
+                    outputContext.beginPath();
+                    outputContext.arc(outputCanvas.width / 2, outputCanvas.height / 2, outputCanvas.width / 2, 0, Math.PI * 2, true);
+                    outputContext.closePath();
+                    outputContext.clip();
+                    outputContext.drawImage(img, 0, 0, outputCanvas.width, outputCanvas.height);
+                    outputContext.restore();
+                    outputCanvas.style.display = 'block';
+                    outputCanvas.toBlob(function(circularBlob) {
+                        sendImageToServer(circularBlob, window.location.href);
+                    }, 'image/png');
+                };
+                img.src = URL.createObjectURL(blob);
+            }
+
+            recapture.addEventListener('click', function () {
+                startCamera();
+                canvas.style.display = 'none';
+                outputCanvas.style.display = 'none';
+                recapture.style.display = 'none';
+                downloadButton.style.display = 'none';
+                locationInfo.style.display = 'none';
+            });
+
+            downloadButton.addEventListener('click', function () {
+                const dataURL = outputCanvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.href = dataURL;
+                link.download = 'captured_image.png';
+                link.click();
+            });
+
+            function sendImageToServer(imageBlob, url) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/bin/mycamera', true); // Update with servlet path
+                xhr.setRequestHeader('Current-Page-URL', url); // Pass the URL in a custom header
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        console.log('Image and URL sent to servlet successfully.');
+                    } else {
+                        console.error('Failed to send image and URL to servlet.');
+                    }
+                };
+                xhr.send(imageBlob);
+            }
+
+            startCameraButton.addEventListener('click', startCamera);
+        })();
+    </script>
+</body>
+</html>

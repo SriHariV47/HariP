@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="Hari.adobe.aem.core.services.impl.JsonDataServiceImpl" immediate="true" activate="activate">
+  <service>
+    <provide interface="Hari.adobe.aem.core.services.JsonDataService"/>
+  </service>
+  <implementation class="Hari.adobe.aem.core.services.impl.JsonDataServiceImpl"/>
+</scr:component>

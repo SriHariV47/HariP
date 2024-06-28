@@ -1,0 +1,49 @@
+    <form id="emailForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+        <span class="error-message" id="emailError"></span>
+        <br>
+        <input type="button" value="Submit" onclick="validateAndSubmit()">
+    </form>
+
+    <script>
+    document.getElementById('email').addEventListener('input', function() {
+        var emailField = this;
+        var emailValue = emailField.value;
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Improved email pattern
+        var emailError = document.getElementById('emailError');
+
+        if (emailValue.trim() === '') {
+            emailField.classList.remove('valid');
+            emailField.classList.add('error');
+            emailError.textContent = 'Please enter an email address.';
+        } else if (!emailPattern.test(emailValue)) {
+            emailField.classList.remove('valid');
+            emailField.classList.add('error');
+            emailError.textContent = 'Please enter a valid email address.';
+        } else {
+            emailField.classList.remove('error');
+            emailField.classList.add('valid');
+            emailError.textContent = ''; // Clear error message
+        }
+    });
+
+    function validateAndSubmit() {
+    var emailField = document.getElementById('email');
+    var emailError = document.getElementById('emailError');
+    if (emailField.value.trim() === '') {
+        emailError.textContent = 'Please enter an email address.';
+    } else if (!emailField.classList.contains('valid')) {
+        emailError.textContent = 'Please enter a valid email address.';
+    } else {
+        emailError.textContent = ''; // Clear error message if email is valid
+        var email = emailField.value; // Get the email address
+        // Handle the form submission here if the email is valid
+        // For example, send an AJAX request or update the page content
+        console.log('mail id is submitted correctly:', email);
+    }
+}
+
+    </script>
+
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Audio</title>
+</head>
+<body>
+
+<h1>Text to Audio Example</h1>
+
+<!-- Text input and Speak button -->
+<div>
+    <textarea id="textInput" rows="4" cols="50">${properties.text}</textarea>
+    <button type="button" onclick="speak()">Speak</button>
+</div>
+
+<!-- Form for text submission -->
+<form id="textForm" action="/bin/yourServlet" method="POST">
+    <div>
+        <label for="textField">Enter Text:</label>
+        <input type="text" id="textField" name="textField" value="${properties.text @ context='unsafe'}" />
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Audio player for playing audio response -->
+<audio id="audioPlayer" controls style="display:none;">
+    <source id="audioSource" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    function speak() {
+        var textInput = document.getElementById('textInput').value;
+        var utterance = new SpeechSynthesisUtterance(textInput);
+        window.speechSynthesis.speak(utterance);
+    }
+
+    document.getElementById('textForm').onsubmit = function(event) {
+        event.preventDefault();
+        var form = event.target;
+
+        // Update text field value from textarea
+        document.getElementById('textField').value = document.getElementById('textInput').value;
+
+        // Call the speak function to read the text aloud
+        speak();
+
+        fetch(form.action, {
+            method: form.method,
+            body: new URLSearchParams(new FormData(form))
+        })
+        .then(response => {
+            console.log('Response received:', response);
+            return response.blob();
+        })
+        .then(blob => {
+            console.log('Blob received:', blob);
+            var url = URL.createObjectURL(blob);
+            console.log('Blob URL:', url);
+            var audioPlayer = document.getElementById('audioPlayer');
+            var audioSource = document.getElementById('audioSource');
+            audioSource.src = url;
+            audioPlayer.style.display = 'block';
+            audioPlayer.load();
+            audioPlayer.play().then(() => {
+                console.log('Audio is playing');
+            }).catch(error => {
+                console.error('Error playing audio:', error);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    };
+</script>
+
+</body>
+</html>

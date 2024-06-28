@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Dialog"
+    dialogTitle="Properties"
+    xtype="dialog">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <pathField
+            jcr:primaryType="cq:Widget"
+            fieldLabel="PathField"
+            name="./pathField"
+            rootPath="/content"
+            xtype="pathfield"/>
+        <childPageNames
+            jcr:primaryType="cq:Widget"
+            disabled="{Boolean}true"
+            fieldLabel="Child Page Names"
+            name="./childPageNames"
+            xtype="textfield"/>
+    </items>
+</jcr:root>

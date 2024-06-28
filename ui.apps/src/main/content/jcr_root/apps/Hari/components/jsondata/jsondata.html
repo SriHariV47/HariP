@@ -1,0 +1,39 @@
+<h1>	Json data submit button Component</h1>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Button Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#submitButton").click(function(){
+                $.ajax({
+                    type: "GET",
+                    url: "/bin/er/edf",
+                    success: function(data){
+                        // Check if data is JSON
+                        if (typeof data === 'object') {
+                            // Convert JSON object to string
+                            data = JSON.stringify(data);
+                        }
+                        // Update a specific HTML element with the received data
+                        $("#responseData").text(data);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error occurred:", error);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <button id="submitButton">Submit</button>
+
+    <!-- This is the element where the received data will be displayed -->
+    <div id="responseData"></div>
+
+</body>
+</html>

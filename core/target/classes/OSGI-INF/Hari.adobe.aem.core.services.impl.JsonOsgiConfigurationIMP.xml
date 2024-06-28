@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="Hari.adobe.aem.core.services.impl.JsonOsgiConfigurationIMP" immediate="true" activate="activate">
+  <property name="getURL" type="String" value="https://jsonplaceholder.typicode.com/users/1"/>
+  <service>
+    <provide interface="Hari.adobe.aem.core.services.impl.JsonOsgiConfigMethod"/>
+  </service>
+  <implementation class="Hari.adobe.aem.core.services.impl.JsonOsgiConfigurationIMP"/>
+</scr:component>

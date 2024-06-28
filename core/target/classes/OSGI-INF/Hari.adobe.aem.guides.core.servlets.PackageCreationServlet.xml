@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="Hari.adobe.aem.guides.core.servlets.PackageCreationServlet">
+  <property name="sling.servlet.paths" type="String">/bin/package</property>
+  <service>
+    <provide interface="javax.servlet.Servlet"/>
+  </service>
+  <reference name="packaging" interface="org.apache.jackrabbit.vault.packaging.Packaging" field="packaging"/>
+  <implementation class="Hari.adobe.aem.guides.core.servlets.PackageCreationServlet"/>
+</scr:component>

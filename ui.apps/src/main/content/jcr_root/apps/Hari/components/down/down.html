@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download and Send PDF</title>
+    <style>
+        
+        #content {
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            position: relative;
+            text-align: left;
+        }
+        .content-text {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+        #dynamicName {
+            display: inline-block;
+           
+            color: white; /* Ensure text is readable */
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0;
+        }
+        .content-image {
+            width: 25px; /* Set a suitable width for the image */
+            height: auto; /* Maintain aspect ratio */
+            margin-left: 10px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div id="content">
+        <div class="content-text" id="dynamicContent">
+            <p id="dynamicName">${properties.name}   <img src="https://static.vecteezy.com/system/resources/previews/000/338/538/original/vector-printer-icon.jpg" class="content-image" alt="Printer Icon">
+      </p>
+             </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Get the dynamic content element
+            var dynamicContent = document.getElementById('dynamicContent');
+
+            // Add a click event listener to the dynamic content
+            dynamicContent.addEventListener('click', function() {
+                // Call the downloadAndSendPDF() function when the dynamic content is clicked
+                downloadAndSendPDF();
+            });
+        });
+
+        function downloadAndSendPDF() {
+            // Generate PDF from the content
+            var element = document.getElementById('content');
+            html2pdf().from(element).set({
+                margin: 1,
+                filename: 'generated.pdf',
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            }).toPdf().output('blob').then(function (pdfBlob) {
+                // Create a link element
+                var url = window.URL.createObjectURL(pdfBlob);
+                var a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'generated.pdf';
+
+                // Append the link to the body
+                document.body.appendChild(a);
+                a.click();
+
+                // Remove the link
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            });
+        }
+    </script>
+</body>
+</html>

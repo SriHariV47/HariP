@@ -1,0 +1,46 @@
+<h1>Software component</h1>
+
+<div data-sly-use.obj= "Hari.adobe.aem.guides.core.models.Softwareslimgmodel">
+
+<h2>Header Links M1 </h2>
+<div data-sly-list="${obj.headerLinks}">
+<div>Name:${item.name}</div>
+<div>URL:${item.url} </div>
+<div>Icon:${item.icon} </div>
+<div>HideInMobileMenu:${item.hideInMobileMenu} </div>
+</div>
+
+
+<h2>Seidebar M2 </h2>
+<div data-sly-list="${obj.sidebar}">
+<div>Name:${item.name}</div>
+<div>SecondLevelEnabled:${item.secondLevelEnabled} </div>
+<div>SelectedIcon:<img src="${item.selectedIcon}"> </div>
+<div>MainAnchorDisabled:${item.mainAnchorDisabled}</div>
+<div>Target:${item.target}</div>
+<div>Icon:<img src="${item.icon}"> </div>
+<div>Path:${item.path} </div>
+</div>
+
+<div data-sly-list.nesteditem="${item.secondlevelsidebarmanual}">
+<div>Sidebar Path :${nesteditem.sidebarpath}</div>
+</div>
+
+
+
+<h2>Business M3 </h2>
+<div data-sly-list="${obj.businesses}">
+<div>Section Name:${item.sectionName}</div>
+
+<div data-sly-list.nesteditem="${item.items}">
+<div>Link :<a href="${nesteditem.link}.html"> Nested </a></div>
+<div>Name:${nesteditem.name}</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+

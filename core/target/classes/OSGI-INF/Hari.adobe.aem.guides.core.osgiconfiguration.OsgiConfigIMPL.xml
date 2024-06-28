@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="Hari.adobe.aem.guides.core.osgiconfiguration.OsgiConfigIMPL" activate="start">
+  <property name="getHeroName" type="String" value="balakrishna"/>
+  <property name="getHeroAge" type="Integer" value="50"/>
+  <service>
+    <provide interface="Hari.adobe.aem.guides.core.osgiconfiguration.OsgiconfigMethods"/>
+  </service>
+  <implementation class="Hari.adobe.aem.guides.core.osgiconfiguration.OsgiConfigIMPL"/>
+</scr:component>

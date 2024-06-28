@@ -1,0 +1,13 @@
+<h1>Header Component</h1>
+<div data-sly-use.obj= "Hari.adobe.aem.guides.core.models.HeaderSlingmodelex">
+<div>Text:${obj.text}</div>
+<div>checkbox :${obj.checkbox}</div>
+<div>pathfield :${obj.pathfield}</div>
+
+
+<div data-sly-list="${obj.details}">
+<div>firstname :${item.firstname} </div>
+<div>date of birth :${item.dob}</div>
+</div>
+</div>
+
