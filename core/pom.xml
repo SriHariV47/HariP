@@ -609,11 +609,11 @@ Import-Package: javax.annotation;version=0.0.0,*
     	</dependency>
 
    	    <!-- Spring Web -->
-    	<dependency>
+    	<!-- <dependency>
        		<groupId>org.springframework</groupId>
         	<artifactId>spring-web</artifactId>
         	<version>5.3.10</version>
-    	</dependency>
+    	</dependency> -->
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-security</artifactId>

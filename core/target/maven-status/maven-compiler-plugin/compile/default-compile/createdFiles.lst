@@ -30,6 +30,7 @@ Hari\adobe\aem\guides\core\servlets\ChildPagesServlet.class
 Hari\adobe\aem\guides\core\models\Mixed.class
 Hari\adobe\aem\guides\core\models\Header1.class
 Hari\adobe\aem\guides\core\servlets\TextToSpeechServlet.class
+Hari\adobe\aem\core\services\Demo.class
 Hari\adobe\aem\core\services\impl\JsonOsgiConfigMethod.class
 Hari\adobe\aem\core\services\impl\DataUtilServicesImpl.class
 Hari\adobe\aem\guides\core\models\HelloWorldModel.class
@@ -80,6 +81,7 @@ Hari\adobe\aem\guides\core\models\Car.class
 Hari\adobe\aem\guides\core\filters\package-info.class
 Hari\adobe\aem\guides\core\osgiconfiguration\OsgiconfigMethods.class
 Hari\adobe\aem\guides\core\servlets\ComponentPathServlet.class
+com\maximus\aem\base\core\Demo.class
 Hari\adobe\aem\guides\core\models\CorouselSlingmodelEx.class
 Hari\adobe\aem\guides\core\models\ChildPagesModel$ChildPage.class
 Hari\adobe\aem\guides\core\servlets\ServletOsgiC.class

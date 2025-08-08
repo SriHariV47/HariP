@@ -46,19 +46,11 @@ Import-Package: javax.annotation;version="0.0.0",Hari.adobe.aem.guides
  version="[1.1,2)",org.apache.sling.settings;version="[1.3,2)",org.jso
  n;version="[20090211.0,20090212)",org.osgi.service.component;version=
  "[1.4,2)",org.osgi.service.event;version="[1.3,2)",org.slf4j;version=
- "[1.7,2)",org.springframework.beans.factory.annotation,org.springfram
- ework.context.annotation,org.springframework.security.config.annotati
- on,org.springframework.security.config.annotation.authentication.buil
- ders,org.springframework.security.config.annotation.authentication.co
- nfigurers.provisioning,org.springframework.security.config.annotation
- .web,org.springframework.security.config.annotation.web.builders,org.
- springframework.security.config.annotation.web.configurers,org.spring
- framework.security.config.http,org.springframework.security.crypto.bc
- rypt,org.springframework.security.web
+ "[1.7,2)"
 Private-Package: Hari.adobe.aem.core.services,Hari.adobe.aem.core.serv
  ices.impl,Hari.adobe.aem.guides.core.models.impl,Hari.adobe.aem.guide
- s.core.osgiconfiguration,Hari.adobe.aem.guides.core.workflow,luffy.ad
- obe.aem.guides.core.models
+ s.core.osgiconfiguration,Hari.adobe.aem.guides.core.workflow,com.maxi
+ mus.aem.base.core
 Provide-Capability: osgi.service;objectClass:List<String>="Hari.adobe.
  aem.core.services.DataUtilService";uses:="Hari.adobe.aem.core.service
  s",osgi.service;objectClass:List<String>="Hari.adobe.aem.core.service
